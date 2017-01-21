@@ -1,0 +1,107 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+/**
+  Define your custom variables here
+  This will override variables from
+  ... bootstrap/_variables.scss
+**/
+$icon-font-path: "../fonts/bootstrap/" !default;
+$fa-font-path: "../fonts/fontawesome" !default;
+
+
+@import "_variables";
+
+// bootstrap variable settings here
+@import "bootstrap-scss/_bootstrap-custom-variables";
+@import "bootstrap-scss/_bootstrap-custom";
+// @import "bootstrap-scss/theme/jumbotron-narrow"; //bootstrap theme
+// font awesome
+@import "font-awesome-scss/font-awesome";
+
+// add more css stuff here
+@import "code-highlight/github";
+@import "code-style";
+@import "home-style";
+@import "taxonomies-style";
+@import "retourn-to-top";
+@import "nav-style";
+@import "header-style";
+@import "social-style";
+@import "footer-style";
+@import "post-style";
+
+/* Sticky.footer-top styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  font-family: $font-stack;
+  font-size: 1.6em;
+  /* Margin bottom by.footer height */
+  margin-bottom: $margin-bottom;
+}
+
+#main-navbar {
+  margin-bottom: 0;
+}
+// info, tags & categories
+  .info {
+    padding: .15em 0;
+    em {
+      color: black;
+      font-size: .85em;
+      font-weight: 600;
+    }
+  }
+
+// author
+  .author {
+    a {
+        color: $gray-light;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: $gray;
+        }
+      }
+  }
+
+// helpers
+  .unselectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
+
+/* Flatten das boostrap */
+.navbar, .navbar-inverse,  .navbar-inner, .well, .popover, .btn, .tooltip, input, select, textarea, pre, .progress, .modal, .add-on, .alert, .table-bordered, .nav>.active>a, .dropdown-menu, .tooltip-inner, .badge, .label, .img-polaroid {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  border-collapse: collapse !important;
+  background-image: none !important;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.inline-content{
+  display: block;
+  div {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,30 @@
+{% include data.html%}
+<header class=" header clearfix website-header">
+  <div class="container">
+    <div class="row">
+      <!-- titles -->
+      <div class="col-xs-12 col-md-6 col-lg-6 vcenter">
+          <div style="height:100%;">
+            <h1 class="website-title">
+              <a href={{ "/" | relative_url}}>{{website.title}} </a>
+            </h1>
+
+            {% if website.subtitle %}
+              <h2 class="website-subtitle">
+                {{website.subtitle}}
+              </h2>
+            {% endif%}
+
+            {% if website.description %}
+              <div class="website-description">
+                {{website.description}}
+              </div>
+            {% endif %}
+          </div>
+      </div><!--
+   --><div class="col-xs-12 col-md-6 col-lg-6 vcenter">
+        {% include social.html %}
+      </div>
+    </div><!--  / row  -->
+  </div>
+</header>

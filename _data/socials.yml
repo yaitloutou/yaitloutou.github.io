@@ -1,0 +1,25 @@
+- platform: email
+  username: yaitloutou@gmail.com #email address
+
+- platform: twitter
+  username: yaitloutou
+  profile: https://twitter.com/yaitloutou
+
+- platform: facebook
+  username: y.aitloutou
+  profile: https://facebook.com/y.aitloutou
+  active: false
+
+- platform: skype
+  username: yaitloutou
+  profile: https://twitter.com/yaitloutou
+  active: false
+
+- platform: github
+  username: yaitloutou
+  profile: https://github.com/yaitloutou
+
+- platform: stack-overflow
+  username: yaitloutou
+  profile: https://stackoverflow.com/users/2245329/yaitloutou?tab=profile
+

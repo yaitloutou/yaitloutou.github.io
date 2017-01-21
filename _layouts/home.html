@@ -1,0 +1,36 @@
+---
+layout: page
+---
+{%include data.html%}
+<!-- This loops through the paginated posts -->
+  {% for post in paginator.posts %}
+  <article>
+    <!-- post header -->
+      <a href="{{post.url}}">
+        <header>
+          <h3 class="home-post-title">{{ post.title }}</h3>
+          {% if post.subtitle %}
+          <div class="home-post-subtitle"> {{post.subtitle}} </div>
+          {% endif %}
+        </header>
+      </a>
+    <!-- post desciption-->
+      {% if post.description %}
+        <div class="post-description">
+        {{post.description}}
+        </div>
+      {% endif %}
+    <!-- post footer-->
+
+      <footer>
+        <!-- date -->
+          <div class="dates">
+          {% include dates.html %}
+          </div>
+        <!-- categories and tags -->
+          {% include taxonomies.html %}
+        <!-- author -->
+          {% include author.html %}
+      </footer>
+  </article>
+  {% endfor %}

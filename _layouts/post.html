@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{% include data.html %}
+<div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-2 col-xs-12">
+<article>
+  <!-- page header -->
+    <header class="page-header">
+      <!-- titles -->
+        <div class="page-titles">
+          <!-- title -->
+            <h2 class="page-title">{{page.title | upcase}}</h2>
+            {% if page.subtitle %}
+          <!-- subtitle -->
+            <div class="page-subtitle">{{ page.subtitle  | capitalize}}</div>
+            {% endif %}
+        </div>
+      <!-- details -->
+        <div class="page-detail">
+          <div class="info">
+            <!-- author -->
+              {% include author.html %}
+            <!-- date  -->
+              {% include dates.html %}
+          </div>
+          <!--  categories and tags -->
+          {% include taxonomies.html %}
+        </div>
+    </header>
+  <!-- page main -->
+    <div class="page-main">
+      <!-- post-content -->
+        <div class="page-content">
+          {{ content }}
+        </div>
+      <!-- post-main footer -->
+        <footer class="inline-content">
+          <!-- categories -->
+            {% if page.categories != empty %}
+            <div class="info">{% include categories.html %}</div>
+            {% endif %}
+          <!-- tags -->
+            {% if page.tag %}
+            <div class="info">{% include tags.html %}</div>
+            {% endif %}
+        </footer>
+    </div><!-- / post-core -->
+  <!-- page footer -->
+    <footer class="page-footer">
+      <!-- Next/Previous -->
+        <div class="page-nav col-xs-12">
+          {% if page.next.url %}
+          <div class="next col-lg-6 col-md-6 col-xs-12">
+            <a href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+          </div>
+          {% endif %}
+          {% if page.previous.url %}
+          <div class="prev col-lg-6 col-md-6 col-xs-12">
+            <a href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+          </div>
+          {% endif %}
+        </div><!--  / Next/Previous  -->
+    </footer>
+</article>
+</div>
+

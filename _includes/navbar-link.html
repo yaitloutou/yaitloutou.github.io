@@ -1,0 +1,36 @@
+{% capture before %}{{ include.link[1] | split: "://" | first }}{% endcapture %}
+{% capture after %}{{ include.link[1] | split: "://" | last }}{% endcapture %}
+
+{% assign internal = true %}
+{% if before != after %}
+  {% if before == "http" or before == "https" %}
+    {% assign internal = false %}
+  {% endif %}
+{% endif %}
+
+{% if internal %}
+
+  {% capture link_url %}{{ site.baseurl }}{{ include.link[1] }}{% endcapture %}
+
+  {% comment %}is active ?{% endcomment %}
+  {% if page.id == link_url %}
+    {% assign active = "active" %}
+  {% elsif page.id == "" or page.id == nil and link_url == '/' %}
+    {% assign active = "active" %}
+  {% else %}
+    {% assign active = "" %}
+  {%endif%}
+{% else %}
+  {% capture link_url %}{{ include.link[1] }}{% endcapture %}
+{% endif %}
+
+<li class="{{active}}" >
+  <a href="{{ link_url }}">
+    {% if include.icon %}
+    <i class="{{ include.icon }}" title="{{ include.link[0] | capitalize }}"></i>
+    {% endif %}
+    {% unless include.icon and include.hidetext == 'true' %}
+    {{ include.link[0] | capitalize }}
+    {% endunless %}
+  </a>
+</li>

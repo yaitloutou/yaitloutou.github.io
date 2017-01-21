@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{% include data.html %}
+
+<section>
+  <!-- page header -->
+  {% if layout.header %}
+    {%include {{layout.header}}%}
+  {% else %}
+    <header class="page-header">
+      <!-- title -->
+      <h2 class="page-title">{{page.title | strip | capitalize}}</h2>
+      {% if page.subtitle %}
+      <!-- subtitle -->
+      <div class="page-subtitle">{{ page.subtitle | strip | capitalize}}</div>
+      {% endif %}
+      <!-- description -->
+      {% if page.description %}
+      <div class="page-description">{{ page.description }}</div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <!-- page main -->
+    <main>
+    {{ content }}
+    </main>
+
+  <!-- page footer -->
+    {% if page.footer %}
+    <footer>
+      {%include {{page.footer}}%}
+    </footer>
+    {% endif %}
+</section>

@@ -1,0 +1,9 @@
+- home : "/"
+  icon: "fa fa-home"
+  hidetext: true
+- contact : "/contact"
+- about: "/about"
+- archive:
+  - posts: '/archive/posts'
+  - tags: '/archive/tags'
+  - categoreies: '/archive/categories/'

@@ -1,0 +1,42 @@
+{% include data.html %}
+
+<!-- to use this include in both posts' page and home page -->
+{% if page.collection == "posts" %}
+  {% assign _author = page.author %}
+{% else %}
+  {% assign _author = post.author %}
+{% endif %}
+
+<!-- who is the author ?? -->
+{% if _author %}
+  {% if _author.name %} <!-- he has a name ? -->
+    {% capture author %}{{_author.name}}{% endcapture %}
+  {% else %} <!-- then, he is the name -->
+    {% capture author %}{{_author}}{% endcapture %}
+  {% endif %}
+
+  {% if _author.url %}
+    {% capture url %}{{ _author.url }}{% endcapture %}
+    {% assign target = '_blank' %} <!-- new tab -->
+  {% endif %}
+
+{% else %} <!-- post author not specified => use default  -->
+  {% if  page.collection == "posts" or admin.display_at_home != false %}
+      {% capture author %}{{ admin.name }}{% endcapture %}
+      {% assign url = '/about' %}
+      {% assign target = '_self' %}
+  {% endif %}
+{% endif %}
+<!-- end `who is` -->
+
+{% if author %}
+<span class="author">
+
+  <i class="fa fa-pencil" aria-hidden="true" title="by {{ author | lstrip }}"></i>
+  {% if url %}<a href={{url}} target={{target}} title="{{ author | lstrip }}" rel="author">{% endif %}
+
+  {{author | html_strip | strip}}
+
+  {% if url %}</a>{% endif %}
+</span>
+{% endif %}
