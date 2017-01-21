@@ -6,6 +6,8 @@
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
+#ither file
+Rakefile
 
 # Directory
 _site
