@@ -1,3 +1,9 @@
+# Filtering Content
+show_drafts: null
+limit_posts: 0
+future:      true   # make posts with futur date generable
+unpublished: false
+
 # Where things are
 sass:
   sass_dir: _sass
