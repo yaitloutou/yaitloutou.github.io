@@ -1,5 +1,7 @@
 ---
 title: Jekyll code highlighing
+category: webdev
+tag: [jekyll,code highlight,scss]
 ---
 
 ```javascript
@@ -19,10 +21,11 @@ function order(words){
 
 ---
 
-To get code highlighted in jekyll, you need to check 2 things:
+To get code highlighted in jekyll, you need to check 3 things:
 
-- [ ] the _highlighter_ and the _markdown processors_ are correctly configured in `_config.yml`
-- [ ] the generated html files have access to a CSS highlighting-syntax style rules
+1. the _highlighter_ and the _markdown processors_ are correctly configured in `_config.yml`
+2. your code block is correctly formatted.
+3. the generated html files have access to a CSS highlighting-syntax style rules
 
 # 1. Highlighter and the markdown processors configuration
 
@@ -30,19 +33,29 @@ As of jekyll 3.0, Kramdown as the Markdown engine, and Rouge as the syntax highl
 
 So you can safely remove their related setting, or set it at  `_config.yml` as follows:
 
+```ruby
+# Conversion
+markdown:    kramdown
+highlighter: rouge
 
-    # Conversion
-    markdown:    kramdown
-    highlighter: rouge
+# Markdown Processors
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+```
 
-    # Markdown Processors
-    kramdown:
-      input: GFM
-      auto_ids: true
-      syntax_highlighter: rouge
+# 2. Code block
 
+> A code block can be started by using four spaces or one tab and then the text of the code block
+>
+> -- [kramdown docs][6]
 
-# 2. Code highlighting style:
+for [fenced code block][7] you can use `~~~` or <code>```</code> the  [github way][9] with Github Flavored Markdown parser [Kramdown::GFM][8] (the default one).
+
+You can also wrap the code in `{%raw%}{%highlight javascript%}... {%endhighlight%}{%endraw%}` blocks.
+
+# 3. Code highlighting style:
 
 the generated html file **should have access** to some CSS code-highlighting rules. that depends on the theme that you're working with.
 
@@ -60,34 +73,41 @@ for a quick check, I've putted some scss code-highlighting themes in this [repo]
 
 in `assets/css/main.scss` add the following:
 
-        @import "sass-code-highlight/monokai"; // 'monokai' as example
-
+```scss
+@import "sass-code-highlight/monokai"; // 'monokai' as example
+```
 
 ## include the Main CSS in the HTML HEAD
 
 you need to have the sinppet bellow in the default layout (`_layouts/default.html`)
 
-    <head>
-      <!-- head stuff-->
+```html
+<head>
+  <!-- head stuff-->
 
-      <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/main.css"> <!-- IMPORTANT -->
-    </head>
-
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/css/main.css"> <!-- IMPORTANT -->
+</head>
+```
 
 either directly, or by including a `head.html`file - defined in `_includes` directory - into it, as follows:
 
-    <!DOCTYPE html>
-    <html lang="en">
-      {% include head.html %} <!--  <- include the head -->
-      <body>
-      {{ content }}
-      </body>
-    </html>
+```html
+<!DOCTYPE html>
+<html lang="en">
+  {% raw %}{% include head.html %} <!--  <- include the head -->{% endraw %}
+  <body>
+  {% raw %}{{ content }}{% endraw %}
+  </body>
+</html>
+```
 
-
-**Note:** make sure that the `href="css/path/` is valid. e.g `{{site.baseurl}}` is croectly setted
+**Note:** make sure that the `href="css/path/"` is valid. e.g `{% raw %}{{site.baseurl}}{% endraw %}` is croectly setted
 
 [3]: https://jekyllrb.com/docs/configuration/
 [4]: https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
 [5]: https://github.com/yaitloutou/sass-code-highlight
+[6]: https://kramdown.gettalong.org/syntax.html#code-blocks
+[7]: https://kramdown.gettalong.org/syntax.html#fenced-code-blocks
+[8]: https://kramdown.gettalong.org/parser/gfm.html
+[9]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code-and-syntax-highlighting
