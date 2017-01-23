@@ -1,5 +1,5 @@
 ---
-title: Jekyll code highlighing
+title: Jekyll code highlighting
 category: webdev
 tag: [jekyll,code highlight,scss]
 ---
