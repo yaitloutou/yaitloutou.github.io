@@ -458,11 +458,11 @@
 </time>
 </span>
 <!-- last update date-->
-<span class="date date-update"  title="last update: 22/01/17 22:34 pm">
+<span class="date date-update"  title="last update: 23/01/17 08:22 am">
 
-<time datetime="2017-01-22T22:34:19+00:00">
+<time datetime="2017-01-23T08:22:08+00:00">
   <i class="fa fa-refresh " aria-hidden="true"></i>
-  22/01/17 22:34 pm
+  23/01/17 08:22 am
 </time>
 
 </span>
@@ -481,7 +481,67 @@
 
 <!-- categories -->
 
+<div class="info">
+  <i class="fa fa-folder-open" aria-hidden="true" title="Categories"></i>
+  
+
+
+
+
+
+<!-- to use this include in both posts' page and home page -->
+
+
+
+<div class="taxonomies categories">
+  <ul aria-label="Categories" data-header="Categories">
+  
+    <li class="category cat-webdev">
+      <a href="/category/webdev">Webdev</a>
+    </li>
+  
+  </ul>
+</div>
+
+
+</div>
+
 <!-- tags -->
+
+<div class="info">
+  <i class="fa fa-tags" aria-hidden="true" title="Tags"></i>
+  
+
+
+
+
+
+<!-- to use this include in both posts' page and home page -->
+
+   <!--yes, it's `page.tag` without `s`-->
+
+
+
+<div class="taxonomies tags">
+  <ul aria-label="Tags" data-header="Tags">
+  
+    <li class="tag tag-jekyll">
+      <a href="/tag/jekyll">jekyll</a>
+    </li>
+  
+    <li class="tag tag-code highlight">
+      <a href="/tag/code-highlight">code highlight</a>
+    </li>
+  
+    <li class="tag tag-scss">
+      <a href="/tag/scss">scss</a>
+    </li>
+  
+  </ul>
+</div>
+
+
+</div>
 
 
         </div>
@@ -505,12 +565,158 @@
 </code></pre>
 </div>
 
+<hr />
+
+<p>To get code highlighted in jekyll, you need to check 3 things:</p>
+
+<ol>
+  <li>the <em>highlighter</em> and the <em>markdown processors</em> are correctly configured in <code class="highlighter-rouge">_config.yml</code></li>
+  <li>your code block is correctly formatted.</li>
+  <li>the generated html files have access to a CSS highlighting-syntax style rules</li>
+</ol>
+
+<h1 id="highlighter-and-the-markdown-processors-configuration">1. Highlighter and the markdown processors configuration</h1>
+
+<p>As of jekyll 3.0, Kramdown as the Markdown engine, and Rouge as the syntax highlighter. are the <a href="https://jekyllrb.com/docs/configuration/">default jekyll setting</a>, and the only setting supported by <a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">github pages</a>.</p>
+
+<p>So you can safely remove their related setting, or set it at  <code class="highlighter-rouge">_config.yml</code> as follows:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1"># Conversion</span>
+<span class="ss">markdown:    </span><span class="n">kramdown</span>
+<span class="ss">highlighter: </span><span class="n">rouge</span>
+
+<span class="c1"># Markdown Processors</span>
+<span class="ss">kramdown:
+  input: </span><span class="no">GFM</span>
+  <span class="ss">auto_ids: </span><span class="kp">true</span>
+  <span class="ss">syntax_highlighter: </span><span class="n">rouge</span>
+</code></pre>
+</div>
+
+<h1 id="code-block">2. Code block</h1>
+
+<blockquote>
+  <p>A code block can be started by using four spaces or one tab and then the text of the code block</p>
+
+  <p>– <a href="https://kramdown.gettalong.org/syntax.html#code-blocks">kramdown docs</a></p>
+</blockquote>
+
+<p>for <a href="https://kramdown.gettalong.org/syntax.html#fenced-code-blocks">fenced code block</a> you can use <code class="highlighter-rouge">~~~</code> or <code>```</code> the  <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code-and-syntax-highlighting">github way</a> with Github Flavored Markdown parser <a href="https://kramdown.gettalong.org/parser/gfm.html">Kramdown::GFM</a> (the default one).</p>
+
+<p>You can also wrap the code in <code class="highlighter-rouge"><span class="p">{</span><span class="err">%highlight</span><span class="w"> </span><span class="err">javascript%</span><span class="p">}</span><span class="err">...</span><span class="w"> </span><span class="p">{</span><span class="err">%endhighlight%</span><span class="p">}</span></code> blocks.</p>
+
+<h1 id="code-highlighting-style">3. Code highlighting style:</h1>
+
+<p>the generated html file <strong>should have access</strong> to some CSS code-highlighting rules. that depends on the theme that you’re working with.</p>
+
+<p>One way to do so, is to have a code-highlighting style rules defined in the main css file, then include that file in the html head of the <em>default layout</em>.</p>
+
+<h2 id="define-the-css-code-highliting-rules">define the CSS code-highliting rules</h2>
+
+<p>Make sure that the main CSS file, (located at <code class="highlighter-rouge">/assets/css</code>, and usually named <code class="highlighter-rouge">main.scss</code> or <code class="highlighter-rouge">style.scss</code>) has some code highlight CSS rules defined, either explicitly defined there, or by importing a file (scss, sass, or less) that contains the CSS rules.</p>
+
+<p>for a quick check, I’ve putted some scss code-highlighting themes in this <a href="https://github.com/yaitloutou/sass-code-highlight">repo</a></p>
+
+<ul>
+  <li>clone <a href="https://github.com/yaitloutou/sass-code-highlight">sass-code-highlight</a> repo</li>
+  <li>put <code class="highlighter-rouge">sass-code-highlight</code> folder inside  the sass directory (by default: <code class="highlighter-rouge">_sass</code>)</li>
+  <li>inport the code-highlight to the main css file</li>
+</ul>
+
+<p>in <code class="highlighter-rouge">assets/css/main.scss</code> add the following:</p>
+
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="k">@import</span> <span class="s2">"sass-code-highlight/monokai"</span><span class="p">;</span> <span class="c1">// 'monokai' as example
+</span></code></pre>
+</div>
+
+<h2 id="include-the-main-css-in-the-html-head">include the Main CSS in the HTML HEAD</h2>
+
+<p>you need to have the sinppet bellow in the default layout (<code class="highlighter-rouge">_layouts/default.html</code>)</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="c">&lt;!-- head stuff--&gt;</span>
+
+  <span class="c">&lt;!-- CSS --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/assets/css/main.css"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- IMPORTANT --&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre>
+</div>
+
+<p>either directly, or by including a <code class="highlighter-rouge">head.html</code>file - defined in <code class="highlighter-rouge">_includes</code> directory - into it, as follows:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  {% include head.html %} <span class="c">&lt;!--  &lt;- include the head --&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  {{ content }}
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> make sure that the <code class="highlighter-rouge">href="css/path/"</code> is valid. e.g <code class="highlighter-rouge"><span class="p">{</span><span class="err">{site.baseurl</span><span class="p">}</span><span class="err">}</span></code> is croectly setted</p>
+
+
         </div>
       <!-- post-main footer -->
         <footer class="inline-content">
           <!-- categories -->
             
+            <div class="info">
+
+
+
+
+
+<!-- to use this include in both posts' page and home page -->
+
+
+
+<div class="taxonomies categories">
+  <ul aria-label="Categories" data-header="Categories">
+  
+    <li class="category cat-webdev">
+      <a href="/category/webdev">Webdev</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+            
           <!-- tags -->
+            
+            <div class="info">
+
+
+
+
+
+<!-- to use this include in both posts' page and home page -->
+
+   <!--yes, it's `page.tag` without `s`-->
+
+
+
+<div class="taxonomies tags">
+  <ul aria-label="Tags" data-header="Tags">
+  
+    <li class="tag tag-jekyll">
+      <a href="/tag/jekyll">jekyll</a>
+    </li>
+  
+    <li class="tag tag-code highlight">
+      <a href="/tag/code-highlight">code highlight</a>
+    </li>
+  
+    <li class="tag tag-scss">
+      <a href="/tag/scss">scss</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
             
         </footer>
     </div><!-- / post-core -->

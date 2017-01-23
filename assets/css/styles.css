@@ -7410,7 +7410,7 @@ button.close {
 .highlight .hll {
   background-color: #49483e; }
 .highlight .c {
-  color: #75715e; }
+  color: #a8a38d; }
 .highlight .err {
   color: #960050;
   background-color: #1e0010; }
@@ -7425,7 +7425,7 @@ button.close {
 .highlight .p {
   color: #f8f8f2; }
 .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs {
-  color: #75715e; }
+  color: #a8a38d; }
 .highlight .ge {
   font-style: italic; }
 .highlight .gs {
@@ -7490,10 +7490,12 @@ button.close {
   color: #a6e22e; }
 
 code {
-  background-color: "#282C34"; }
+  background-color: "#282C34";
+  color: whitesmoke; }
 
 pre {
-  background-color: "#282C34"; }
+  background-color: "#282C34";
+  color: whitesmoke; }
 
 code, pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
