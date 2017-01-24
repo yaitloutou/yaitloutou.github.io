@@ -27,7 +27,7 @@ end
 
 def get_post_title (post)
   unless (post =~ /_posts/)
-    puts "not a post: ",post
+    puts "[#{post}] is not a post"
   else
     title_start = "_posts/2017-01-01-".length
     title_end = post.reverse.index(".") + 2
