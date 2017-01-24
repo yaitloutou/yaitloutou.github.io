@@ -1,12 +1,6 @@
 # analytics
 google-analytics: UA-90683742-1
 
-# Filtering Content
-show_drafts: null
-limit_posts: 0
-future:      true   # make posts with futur date generable
-unpublished: false
-
 # Where things are
 sass:
   sass_dir: _sass
@@ -34,8 +28,19 @@ defaults:
       permalink: /blog/:year/:month/:day/:slug/
 
 # Handling Reading
-exclude:
-  - bower_components # move bower_components content to the appropriate directories (e.g sass, assets, )
+safe:         false
+include:      [".htaccess"]
+exclude:      [
+  bower_components # move bower_components content to the appropriate directories (e.g sass, assets, )
+  , Rakefile, Rakefile.bk
+]
+
+# Filtering Content
+show_drafts: null
+limit_posts: 0
+future:      true   # Publish posts or collection documents with a future date.
+unpublished: false
+
 
 # Plugins
 gems:
