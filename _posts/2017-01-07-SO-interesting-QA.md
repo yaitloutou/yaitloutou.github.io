@@ -34,3 +34,7 @@ tag: [css,sass,html,html5,git,gitignore]
 **Jekyll**
 
 * [Configure GitHub to use non-supported Jekyll site plugins](http://stackoverflow.com/a/28252200/2245329)
+
+**RegEx**
+
+* [Regex to Match Symbols: !$%^&*()_+|~-=`{}[]:";'<>?,./](http://stackoverflow.com/a/8359631/2245329): `/[$-/:-?{-~!"^_`\[\]]/`
