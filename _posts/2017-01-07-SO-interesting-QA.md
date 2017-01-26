@@ -38,3 +38,7 @@ tag: [css,sass,html,html5,git,gitignore]
 **RegEx**
 
 * [Regex to Match Symbols: !$%^&*()_+|~-=`{}[]:";'<>?,./](http://stackoverflow.com/a/8359631/2245329): `/[$-/:-?{-~!"^_`\[\]]/`
+
+**Ruby**
+
+* [Run Rake tasks from within Rake tasks?](http://stackoverflow.com/a/1290119/2245329)
