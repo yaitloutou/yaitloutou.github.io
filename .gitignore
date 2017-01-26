@@ -1,23 +1,30 @@
+# FILES -------------------------
+
 # file type
 *.gem
 *.bk
-# jekyll dotfile
+
+# jekyll file
 .bundle
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
-#other file
-Rakefile
 
-# Directory
+# other file
+# Rakefile
+
+# DIRECTORIES ---------------------
+
+# jekyll directory
 _site
-## ignore during div
-# _posts/**/*
-_drafts/**/*
+_drafts/**/*  # ignore during div
+# _posts/**/* # ignore during div
+
+# other directory
 _bower_components
 
-# Helper
-gh-md-toc
+# HELPERS -------------------------
+gh-md-toc # toc generator
 
 
 # Exceeption
