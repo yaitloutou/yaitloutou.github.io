@@ -118,8 +118,11 @@ namespace :git do
     branch = args[:branch]
 
     if branch
-      Rake::Task['git:add'].execute
-      Rake::Task['git:push'].execute(branch)
+      Rake::Task['git:add'].reenable
+      Rake::Task['git:add'].invoke
+
+      Rake::Task['git:push'].reenable
+      Rake::Task['git:push'].invokes(branch)
     end
   end
 
