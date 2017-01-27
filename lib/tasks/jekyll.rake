@@ -46,7 +46,7 @@ namespace :jekyll do
     # end
 
     p "---------------------------"
-    p "   start jekyll:build      "
+    p "   end   jekyll:build      "
     p "---------------------------"
   end
 end
