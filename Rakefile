@@ -65,6 +65,7 @@ task :deploy do
         Rake::Task['git:publish'].invoke(deploy_branch)
 
         p "--- << _site --------------"
+        puts
       end
 
     rescue Exception => e
