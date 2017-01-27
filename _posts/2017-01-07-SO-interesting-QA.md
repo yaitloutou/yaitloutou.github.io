@@ -37,7 +37,7 @@ tag: [css,sass,html,html5,git,gitignore]
 
 **RegEx**
 
-* [Regex to Match Symbols: !$%^&*()_+|~-=`{}[]:";'<>?,./](http://stackoverflow.com/a/8359631/2245329): `/[$-/:-?{-~!"^_`\[\]]/`
+* [Regex to Match Symbols: <code>!$%^&*()_+|~-=`{}[]:";'<>?,./</code>](http://stackoverflow.com/a/8359631/2245329):``/[$-/:-?{-~!"^_`\[\]]/`
 
 **Ruby**
 
