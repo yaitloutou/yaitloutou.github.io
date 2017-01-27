@@ -57,9 +57,9 @@ task :deploy do
       Dir.chdir("_site") do
         p "-- > _site ---------------"
 
-        unless File.exist?(".nojekyll")
-          File.new(".nojekyll","w")
-        end
+        # unless File.exist?(".nojekyll")
+        #   File.new(".nojekyll","w")
+        # end
 
         Rake::Task['git:publish'].invoke(deploy_branch)
 
