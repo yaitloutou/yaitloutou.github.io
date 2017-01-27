@@ -121,7 +121,7 @@ namespace :git do
       Rake::Task['git:add'].invoke
 
       Rake::Task['git:push'].reenable
-      Rake::Task['git:push'].invokes(branch)
+      Rake::Task['git:push'].invoke(branch)
     end
   end
 
