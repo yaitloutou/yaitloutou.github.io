@@ -87,12 +87,11 @@ namespace :git do
 
     puts "git add #{file} && git commit -m \"#{msg}\"".bold
     p "---------------------------"
-
+    puts
     puts git_add(file, msg)
     puts
 
     p "--- end   git:add ---------"
-    puts
   end
 
   desc "push to <branch>"
@@ -107,12 +106,11 @@ namespace :git do
 
     puts "git push #{to}".bold
     p "---------------------------"
-
+    puts
     puts git_push(to)
     puts
 
     p "--- end   git:push --------"
-    puts
   end
 
   desc "add all, commit, then push to <branch>"
@@ -126,7 +124,6 @@ namespace :git do
       p "---------------------------"
 
       puts "on branch #{branch}".bold
-      p "---------------------------"
 
       Rake::Task['git:add'].reenable
       Rake::Task['git:add'].invoke
@@ -134,8 +131,7 @@ namespace :git do
       Rake::Task['git:push'].reenable
       Rake::Task['git:push'].invoke(branch)
 
-      p "--- end   git:publish ----"
-      puts
+      p "--- end   git:publish -----"
     end
   end
 
@@ -152,7 +148,6 @@ namespace :git do
     add_posts(modified_posts, "^post: ")
 
     p "--- end   git:add_posts ---"
-    puts
   end
 
 end
