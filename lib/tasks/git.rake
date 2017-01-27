@@ -30,6 +30,12 @@ def git_clean?
   !!clean
 end
 
+def posts?
+  no_posts = (new_posts.empty? and modified_posts.empty?)
+
+  (no_posts ? nil : [new_posts.length, modified_posts.length])
+end
+
 # add <file>, and commit it with <msg>
 def git_add(file, msg)
   `git add #{file} && git commit -m \"#{msg}\"`
@@ -74,7 +80,7 @@ namespace :git do
   task :add, [:msg,:file] do |t, args|
 
     p "---------------------------"
-    p "    state git:add          "
+    p "    start git:add          "
     p "---------------------------"
     puts
     # default args values
@@ -96,7 +102,7 @@ namespace :git do
   task :push, [:branch] do |t,args|
 
     p "---------------------------"
-    p "    state git:push         "
+    p "    start git:push         "
     p "---------------------------"
 
     puts
@@ -128,14 +134,12 @@ namespace :git do
   task :add_posts do
 
     p "---------------------------"
-    p "    state git:add_posts    "
+    p "    start git:add_posts    "
     p "---------------------------"
     puts
 
-    unless git_clean?
-      add_posts(new_posts, "+post: ")
-      add_posts(modified_posts, "^post: ")
-    end
+    add_posts(new_posts, "+post: ")
+    add_posts(modified_posts, "^post: ")
 
     p "--  end   git:add_posts  --"
     puts

@@ -31,7 +31,11 @@ end
 desc "Deploy to the deploy_branch, and push the sources to source_branch"
 task :deploy do
 
-  Rake::Task['git:add_posts'].invoke
+  unless posts?
+    puts "there is no new or modefied post\n\n"
+  else
+    Rake::Task['git:add_posts'].invoke
+  end
 
   unless git_clean?
     puts "there is uncommited changes, commit or discard them and run deploy again".red.bold
