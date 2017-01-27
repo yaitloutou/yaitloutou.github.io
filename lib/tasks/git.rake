@@ -114,17 +114,20 @@ namespace :git do
 
   desc "add all, commit, then push to <branch>"
   task :publish, [:branch] do
+    puts "publish"
 
     branch = args[:branch]
 
-    if branch
-      puts "publish"
-      # Rake::Task['git:add'].reenable
-      # Rake::Task['git:add'].invoke
+    puts branch
 
-      # Rake::Task['git:push'].reenable
-      # Rake::Task['git:push'].invokes(branch)
-    end
+    # if branch
+    #   # puts "publish"
+    #   # Rake::Task['git:add'].reenable
+    #   # Rake::Task['git:add'].invoke
+
+    #   # Rake::Task['git:push'].reenable
+    #   # Rake::Task['git:push'].invokes(branch)
+    # end
   end
 
   # jekyll git tasks ------------------------------------------------------------
