@@ -67,7 +67,8 @@ task :deploy do
       end
 
     rescue Exception => e
-      puts "build failed".red, e.message
+      # puts "build failed".red
+      puts e.message
     end
 
   end
