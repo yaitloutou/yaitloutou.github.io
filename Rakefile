@@ -37,7 +37,7 @@ task :deploy do
   puts
 
   unless posts?
-    puts "there is no new or modefied post"
+    puts "there is no posts to add"
     puts
   else
     Rake::Task['git:add_posts'].invoke
@@ -54,8 +54,8 @@ task :deploy do
       Rake::Task['git:push'].invoke(source_branch)
 
       Dir.chdir("_site") do
-        p "--- >> enter _site --------"
-
+        p "->> enter _site -----------"
+        puts
         unless File.exist?(".nojekyll")
           puts "creat .nojekyll file".bold
           File.new(".nojekyll","w")
@@ -63,8 +63,7 @@ task :deploy do
 
         Rake::Task['git:publish'].invoke(deploy_branch)
 
-        p "--- << exit _site ---------"
-        puts
+        p "-<< exit  _site -----------"
       end
 
     rescue Exception => e
