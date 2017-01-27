@@ -42,3 +42,9 @@ tag: [css,sass,html,html5,git,gitignore]
 **Ruby**
 
 * [Run Rake tasks from within Rake tasks?](http://stackoverflow.com/a/1290119/2245329)
+
+
+**Terminal**
+
+* [Change the output color of echo in Linux](http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
+* [terminal color in ruby?](http://stackoverflow.com/questions/1108767/terminal-color-in-ruby)
