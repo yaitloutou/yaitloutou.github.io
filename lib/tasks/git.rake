@@ -116,9 +116,7 @@ namespace :git do
   task :publish, [:branch] do
     puts "publish"
 
-    branch = args[:branch]
-
-    puts branch
+    puts branch = args[:branch]
 
     # if branch
     #   # puts "publish"
