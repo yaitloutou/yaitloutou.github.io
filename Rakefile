@@ -61,6 +61,7 @@ task :deploy do
         #   File.new(".nojekyll","w")
         # end
 
+        Rake::Task['git:publish'].reeanble
         Rake::Task['git:publish'].invoke(deploy_branch)
 
         p "-- < _site ---------------"
