@@ -4,10 +4,6 @@
 
 # == Helpers ===================================================================
 
-def null_device
-  Gem.win_platform? ? "/NUL"  : "/dev/null"
-end
-
 def get_post_title (post)
   unless (post =~ /_posts/)
     puts "[#{post}] is not a post"

@@ -4,10 +4,6 @@
 
 # == Helpers ===================================================================
 
-def null_device
-  Gem.win_platform? ? "/nul"  : "/dev/null"
-end
-
 def jekyll_build(env)
 
   ENV["JEKYLL_ENV"] = env                         # set build environment
