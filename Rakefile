@@ -52,15 +52,15 @@ task :deploy do
       Rake::Task['jekyll:build'].invoke("production")
       puts "build succeeded".green
 
-      # git_push(source_branch)
+      Rake::Task['git:push'].execute(source_branch)
 
       Dir.chdir("_site") do
-        p "    > _site                "
+        p "-- > _site ---------------"
         unless File.exist?(".nojekyll")
           File.new(".nojekyll","w")
         end
-        # Rake::Task['git:publish'].invoke(deploy_branch)
-        p "    < _site                "
+        Rake::Task['git:publish'].invoke(deploy_branch)
+        p "-- < _site ---------------"
       end
 
     rescue Exception => e
