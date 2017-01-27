@@ -37,7 +37,6 @@ namespace :jekyll do
     # puts
     puts
     p "--- end   jekyll:build ----"
-    puts
     unless build_succeed
       exit 1
     end

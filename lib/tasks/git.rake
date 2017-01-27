@@ -142,7 +142,7 @@ namespace :git do
     p "---------------------------"
     p "    start git:add_posts    "
     p "---------------------------"
-
+    puts "git add <post> && git commit -m \"[+|^]post: title\"".bold
     add_posts(new_posts, "+post: ")
     add_posts(modified_posts, "^post: ")
 
