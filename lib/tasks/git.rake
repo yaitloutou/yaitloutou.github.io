@@ -33,11 +33,11 @@ end
 
 # add <file>, and commit it with <msg>
 def git_add(file, msg)
-  `git add #{file} && git commit -m \"#{msg}\"`
+  `git add #{file} && git commit -m \"#{msg}\" 2>#{null_device}`
 end
 
 def git_push(to)
-  `git push #{to}`
+  `git push #{to} 2>&1`
 end
 
 # jekyll git methods
@@ -77,7 +77,6 @@ namespace :git do
     p "---------------------------"
     p "    start git:add          "
     p "---------------------------"
-    puts
     # default args values
     defaul_file = "-A"
     defaul_msg = "Site updated at #{Time.now.utc}"
@@ -87,7 +86,6 @@ namespace :git do
     msg = args[:msg]
 
     puts git_add(file, msg)
-    puts
 
     p "--- end   git:add ---------"
     puts
@@ -104,7 +102,6 @@ namespace :git do
     to = "origin #{branch}"
 
     puts git_push(to)
-    puts
 
     p "--- end   git:push --------"
     puts
@@ -112,16 +109,22 @@ namespace :git do
 
   desc "add all, commit, then push to <branch>"
   task :publish, [:branch] do |t,args|
-    puts
+
     branch = args[:branch]
 
     if branch
-      puts "publish"
+      p "---------------------------"
+      p "    start git:publish      "
+      p "---------------------------"
+
       Rake::Task['git:add'].reenable
       Rake::Task['git:add'].invoke
 
       Rake::Task['git:push'].reenable
       Rake::Task['git:push'].invoke(branch)
+
+      p "--- end   git:publish ----"
+      puts
     end
   end
 
@@ -133,7 +136,6 @@ namespace :git do
     p "---------------------------"
     p "    start git:add_posts    "
     p "---------------------------"
-    puts
 
     add_posts(new_posts, "+post: ")
     add_posts(modified_posts, "^post: ")

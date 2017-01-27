@@ -22,7 +22,7 @@ namespace :jekyll do
     p "---------------------------"
     p "    start jekyll:build     "
     p "---------------------------"
-    puts
+
     # default args values
     defaul_env = "development"
     args.with_defaults(:env => defaul_env)
@@ -31,7 +31,7 @@ namespace :jekyll do
 
     puts "build, with JEKYLL_ENV = #{env}".bold
     p "---------------------------"
-    puts
+
 
     build_succeed = jekyll_build(env)
 
@@ -39,6 +39,7 @@ namespace :jekyll do
     # puts
 
     p "--- end   jekyll:build ----"
+    puts
     unless build_succeed
       exit 1
     end
