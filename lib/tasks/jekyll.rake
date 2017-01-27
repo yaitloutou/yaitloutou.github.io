@@ -34,14 +34,14 @@ namespace :jekyll do
     puts "build, with JEKYLL_ENV = "+ env
     puts jekyll_build(env)
 
-    status = build_err ? build_err : "build successfuly".green
-    puts status
+    # status = build_err ? build_err : "build successfuly".green
+    # puts status
 
-    success = !build_err
+    # success = !build_err
 
-    unless success
-      exit 1
-    end
+    # unless success
+    #   exit 1
+    # end
 
     p "---------------------------"
     p "   start jekyll:build      "
