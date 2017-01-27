@@ -44,7 +44,7 @@ task :deploy do
     Rake::Task['git:add_posts'].invoke
   end
 
-  unless git_clean?
+  unless true#git_clean?
     puts "there is uncommited changes, commit or discard them and run deploy again".red.bold
     puts
   else
@@ -68,7 +68,7 @@ task :deploy do
 
     rescue Exception => e
       # puts "build failed".red
-      puts e.message
+      puts e.backtrace
     end
 
   end

@@ -37,7 +37,7 @@ def git_add(file, msg)
 end
 
 def git_push(to)
-  system "git push #{to}"
+  `git push #{to}`
 end
 
 # jekyll git methods
@@ -103,7 +103,7 @@ namespace :git do
     puts
     # init arg
     branch = args[:branch]
-    to = "origin "+branch
+    to = "origin #{branch}"
 
     puts git_push(to)
     puts
