@@ -44,7 +44,7 @@ task :deploy do
     Rake::Task['git:add_posts'].invoke
   end
 
-  unless true#git_clean?
+  unless git_clean?
     puts "there is uncommited changes, commit or discard them and run deploy again".red.bold
     puts
   else
@@ -52,19 +52,19 @@ task :deploy do
       Rake::Task['jekyll:build'].invoke("production")
       puts "build succeeded".green
 
-      Rake::Task['git:push'].execute(source_branch)
+      Rake::Task['git:push'].invoke(source_branch)
 
-      Dir.chdir("_site") do
-        p "-- > _site ---------------"
+      # Dir.chdir("_site") do
+      #   p "-- > _site ---------------"
 
-        unless File.exist?(".nojekyll")
-          File.new(".nojekyll","w")
-        end
+      #   unless File.exist?(".nojekyll")
+      #     File.new(".nojekyll","w")
+      #   end
 
-        Rake::Task['git:publish'].invoke(deploy_branch)
+      #   Rake::Task['git:publish'].invoke(deploy_branch)
 
-        p "-- < _site ---------------"
-      end
+      #   p "-- < _site ---------------"
+      # end
 
     rescue Exception => e
       # puts "build failed".red
