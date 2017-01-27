@@ -90,7 +90,6 @@ namespace :git do
     puts
     puts git_add(file, msg)
     puts
-
     p "--- end   git:add ---------"
   end
 
@@ -105,10 +104,10 @@ namespace :git do
     to = "origin #{branch}"
 
     puts "git push #{to}".bold
+
     p "---------------------------"
-    puts
+
     puts git_push(to)
-    puts
 
     p "--- end   git:push --------"
   end
