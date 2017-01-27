@@ -12,7 +12,7 @@ def jekyll_build(env)
 
   ENV["JEKYLL_ENV"] = env                         # set build environment
 
-  build_err = `bundle exec jekyll b 2>&1 `  # build, and return stderr
+  build = `bundle exec jekyll b 2>&1 `  # build, and return stderr
 end
 
 # == Tasks =====================================================================
@@ -25,13 +25,15 @@ namespace :jekyll do
     p "---------------------------"
     p "   start jekyll:build      "
     p "---------------------------"
+    puts
     # default args values
     defaul_env = "development"
     args.with_defaults(:env => defaul_env)
     # initialize args
     env = args[:env]
 
-    puts "build, with JEKYLL_ENV = "+ env
+    puts "build, with JEKYLL_ENV = #{env}".bold
+    puts
     puts jekyll_build(env)
 
     # status = build_err ? build_err : "build successfuly".green
