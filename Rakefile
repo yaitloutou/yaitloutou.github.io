@@ -62,6 +62,7 @@ task :deploy do
         # end
 
         # Rake::Task['git:publish'].reeanble
+        puts deploy_branch
         Rake::Task['git:publish'].invoke(deploy_branch)
 
         p "-- < _site ---------------"
