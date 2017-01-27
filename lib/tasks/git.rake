@@ -113,7 +113,7 @@ namespace :git do
   end
 
   desc "add all, commit, then push to <branch>"
-  task :publish, [:branch] do
+  task :publish, [:branch] do |t,args|
     puts "publish"
 
     puts branch = args[:branch]
