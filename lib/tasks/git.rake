@@ -86,7 +86,7 @@ namespace :git do
     file = args[:file]
     msg = args[:msg]
 
-    git_add(file, msg)
+    puts git_add(file, msg)
     puts
 
     p "--- end   git:add ---------"
