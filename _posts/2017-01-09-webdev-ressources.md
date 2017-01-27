@@ -16,3 +16,5 @@ tag: [html,symbol,font,validator,checker,outline]
 * [font awesome searchable icon list](http://fontawesome.io/icons/)
 
 * [HTML Colors](http://htmlcolorcodes.com/)
+
+* [shell command](http://explainshell.com/explain?cmd=git+commit+-m)
