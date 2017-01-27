@@ -32,7 +32,7 @@ namespace :jekyll do
     env = args[:env]
 
     puts "build, with JEKYLL_ENV = "+ env
-    build_err = jekyll_build(env)
+    puts jekyll_build(env)
 
     status = build_err ? build_err : "build successfuly".green
     puts status
