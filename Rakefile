@@ -31,14 +31,21 @@ end
 desc "Deploy to the deploy_branch, and push the sources to source_branch"
 task :deploy do
 
+  p "---------------------------"
+  p "   start deploy            "
+  p "---------------------------"
+  puts
+
   unless posts?
-    puts "there is no new or modefied post\n\n"
+    puts "there is no new or modefied post"
+    puts
   else
     Rake::Task['git:add_posts'].invoke
   end
 
   unless git_clean?
     puts "there is uncommited changes, commit or discard them and run deploy again".red.bold
+    puts
   else
 
     Rake::Task['jekyll:build'].invoke("production")
@@ -52,4 +59,8 @@ task :deploy do
       # Rake::Task['git:publish'].invoke(deploy_branch)
     end
   end
+
+  p "---------------------------"
+  p "   end   deploy            "
+  p "---------------------------"
 end
