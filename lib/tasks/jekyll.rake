@@ -12,7 +12,7 @@ def jekyll_build(env)
 
   ENV["JEKYLL_ENV"] = env                         # set build environment
 
-  build_err = `bundle exec jekyll b 2>&1 1>#{null_device}`  # build, and return stderr
+  build_err = `bundle exec jekyll b 2>&1 `  # build, and return stderr
 end
 
 # == Tasks =====================================================================
