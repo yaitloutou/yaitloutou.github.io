@@ -33,11 +33,11 @@ end
 
 # add <file>, and commit it with <msg>
 def git_add(file, msg)
-  `git add #{file} && git commit -m \"#{msg}\" 2>#{null_device}`
+  `git add #{file} && git commit -m \"#{msg}\"`
 end
 
 def git_push(to)
-  `git push #{to} 2>&1`
+  `git push #{to}`
 end
 
 # jekyll git methods
@@ -85,7 +85,11 @@ namespace :git do
     file = args[:file]
     msg = args[:msg]
 
+    puts "git add #{file} && git commit -m \"#{msg}\"".bold
+    p "---------------------------"
+
     puts git_add(file, msg)
+    puts
 
     p "--- end   git:add ---------"
     puts
@@ -101,7 +105,11 @@ namespace :git do
     branch = args[:branch]
     to = "origin #{branch}"
 
+    puts "git push #{to}".bold
+    p "---------------------------"
+
     puts git_push(to)
+    puts
 
     p "--- end   git:push --------"
     puts
@@ -115,6 +123,9 @@ namespace :git do
     if branch
       p "---------------------------"
       p "    start git:publish      "
+      p "---------------------------"
+
+      puts "on branch #{branch}".bold
       p "---------------------------"
 
       Rake::Task['git:add'].reenable

@@ -22,22 +22,20 @@ namespace :jekyll do
     p "---------------------------"
     p "    start jekyll:build     "
     p "---------------------------"
-
     # default args values
     defaul_env = "development"
     args.with_defaults(:env => defaul_env)
     # initialize args
     env = args[:env]
 
-    puts "build, with JEKYLL_ENV = #{env}".bold
+    puts "JEKYLL_ENV = '#{env}' jekyll build".bold
     p "---------------------------"
-
 
     build_succeed = jekyll_build(env)
 
     # puts build_succeed ? "build succeeded".green : "build failed".red
     # puts
-
+    puts
     p "--- end   jekyll:build ----"
     puts
     unless build_succeed

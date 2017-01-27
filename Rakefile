@@ -54,25 +54,25 @@ task :deploy do
       Rake::Task['git:push'].invoke(source_branch)
 
       Dir.chdir("_site") do
-        p "--- >> _site --------------"
+        p "--- >> enter _site --------"
 
-        # unless File.exist?(".nojekyll")
-        #   File.new(".nojekyll","w")
-        # end
+        unless File.exist?(".nojekyll")
+          puts "creat .nojekyll file".bold
+          File.new(".nojekyll","w")
+        end
 
-        # Rake::Task['git:publish'].reeanble
-        puts deploy_branch
         Rake::Task['git:publish'].invoke(deploy_branch)
 
-        p "--- << _site --------------"
+        p "--- << exit _site ---------"
         puts
       end
 
     rescue Exception => e
-      # puts "build failed".red
+      puts "Exceptions: #{e.message}".red
+      p "---------------------------"
       puts e.backtrace
+      puts
     end
-
   end
 
   p "--- END   DEPLOY ----------"
