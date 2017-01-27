@@ -30,8 +30,7 @@ def git_clean?
   !!clean
 end
 
-def posts?
-  no_posts = (new_posts.empty? and modified_posts.empty?)
+def posts? no_posts = (new_posts.empty? and modified_posts.empty?)
 
   (no_posts ? nil : [new_posts.length, modified_posts.length])
 end
@@ -94,7 +93,7 @@ namespace :git do
     puts git_add(file, msg)
     puts
 
-    p "--  end   git:add  --------"
+    p "--- end   git:add ---------"
     puts
   end
 
@@ -113,7 +112,7 @@ namespace :git do
     puts git_push(to)
     puts
 
-    p "--  end   git:push  -------"
+    p "--- end   git:push --------"
     puts
   end
 
@@ -141,7 +140,7 @@ namespace :git do
     add_posts(new_posts, "+post: ")
     add_posts(modified_posts, "^post: ")
 
-    p "--  end   git:add_posts  --"
+    p "--- end   git:add_posts ---"
     puts
   end
 

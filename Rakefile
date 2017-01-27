@@ -32,8 +32,9 @@ desc "Deploy to the deploy_branch, and push the sources to source_branch"
 task :deploy do
 
   p "---------------------------"
-  p "   start deploy            "
+  p "    START DEPLOY           "
   p "---------------------------"
+
   puts
 
   unless posts?
@@ -47,20 +48,27 @@ task :deploy do
     puts "there is uncommited changes, commit or discard them and run deploy again".red.bold
     puts
   else
+    begin
+      Rake::Task['jekyll:build'].invoke("production")
+      puts "build succeeded".green
 
-    Rake::Task['jekyll:build'].invoke("production")
+      # git_push(source_branch)
 
-    # git_push(source_branch)
-
-    Dir.chdir("_site") do
-      unless File.exist?(".nojekyll")
-        File.new(".nojekyll","w")
+      Dir.chdir("_site") do
+        p "    > _site                "
+        unless File.exist?(".nojekyll")
+          File.new(".nojekyll","w")
+        end
+        # Rake::Task['git:publish'].invoke(deploy_branch)
+        p "    < _site                "
       end
-      # Rake::Task['git:publish'].invoke(deploy_branch)
+
+    rescue Exception => e
+      puts "build failed".red
     end
+
   end
 
-  p "---------------------------"
-  p "   end   deploy            "
-  p "---------------------------"
+
+  p "--- END   DEPLOY ----------"
 end

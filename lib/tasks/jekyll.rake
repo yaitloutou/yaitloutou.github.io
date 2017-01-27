@@ -12,7 +12,7 @@ def jekyll_build(env)
 
   ENV["JEKYLL_ENV"] = env                         # set build environment
 
-  build = `bundle exec jekyll b 1>#{null_device}`  # build, and return stderr
+  build = `bundle exec jekyll b 2>&1 1>#{null_device}`  # build, and return stderr
   $? == 0
 end
 
@@ -24,7 +24,7 @@ namespace :jekyll do
   task :build, [:env] do |t, args|
 
     p "---------------------------"
-    p "   start jekyll:build      "
+    p "    start jekyll:build     "
     p "---------------------------"
     puts
     # default args values
@@ -34,20 +34,17 @@ namespace :jekyll do
     env = args[:env]
 
     puts "build, with JEKYLL_ENV = #{env}".bold
+    p "---------------------------"
     puts
-    puts jekyll_build(env)
 
-    # status = build_err ? build_err : "build successfuly".green
-    # puts status
+    build_succeed = jekyll_build(env)
 
-    # success = !build_err
+    # puts build_succeed ? "build succeeded".green : "build failed".red
+    # puts
 
-    # unless success
-    #   exit 1
-    # end
-
-    p "---------------------------"
-    p "   end   jekyll:build      "
-    p "---------------------------"
+    p "--- end   jekyll:build ----"
+    unless build_succeed
+      exit 1
+    end
   end
 end
