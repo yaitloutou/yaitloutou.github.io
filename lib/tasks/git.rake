@@ -86,7 +86,7 @@ namespace :git do
     file = args[:file]
     msg = args[:msg]
 
-    puts git_add(file, msg)
+    git_add(file, msg)
     puts
 
     p "--- end   git:add ---------"
@@ -99,8 +99,6 @@ namespace :git do
     p "---------------------------"
     p "    start git:push         "
     p "---------------------------"
-
-    puts
     # init arg
     branch = args[:branch]
     to = "origin #{branch}"

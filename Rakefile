@@ -34,7 +34,6 @@ task :deploy do
   p "---------------------------"
   p "    START DEPLOY           "
   p "---------------------------"
-
   puts
 
   unless posts?
