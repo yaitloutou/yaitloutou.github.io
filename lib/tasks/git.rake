@@ -72,7 +72,11 @@ namespace :git do
 
   desc "add <file> (default: all), and commit with given <msg> (default: 'Site updated at: TIME_UTC')"
   task :add, [:msg,:file] do |t, args|
-    puts "\n** start git:add **\n"
+
+    p "---------------------------"
+    p "    state git:add          "
+    p "---------------------------"
+    puts
     # default args values
     defaul_file = "-A"
     defaul_msg = "Site updated at #{Time.now.utc}"
@@ -81,21 +85,30 @@ namespace :git do
     file = args[:file]
     msg = args[:msg]
 
-    git_add(file, msg)
+    puts git_add(file, msg)
+    puts
 
-    puts "\n** end git:add **\n"
+    p "--  end   git:add  --------"
+    puts
   end
 
   desc "push to <branch>"
   task :push, [:branch] do |t,args|
-    puts "\n** start git:push **\n"
+
+    p "---------------------------"
+    p "    state git:push         "
+    p "---------------------------"
+
+    puts
     # init arg
     branch = args[:branch]
     to = "origin "+branch
 
-    git_push(to)
+    puts git_push(to)
+    puts
 
-    puts "\n** end git:push **\n"
+    p "--  end   git:push  -------"
+    puts
   end
 
   desc "add all, commit, then push to <branch>"
@@ -113,16 +126,18 @@ namespace :git do
 
   desc "add each new or modified post, and commit it with appropiate message"
   task :add_posts do
-    p "-----------------------"
-    p "  start git:add_posts  "
-    p "-----------------------"
+
+    p "---------------------------"
+    p "    state git:add_posts    "
+    p "---------------------------"
     puts
+
     unless git_clean?
       add_posts(new_posts, "+post: ")
       add_posts(modified_posts, "^post: ")
     end
-    puts
-    puts "--- end git:add_posts ---"
+
+    p "--  end   git:add_posts  --"
     puts
   end
 
